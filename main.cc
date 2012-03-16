@@ -3,6 +3,8 @@
 #include <mozartcore.hh>
 #include <coreinterfaces.hh>
 
+#include "interfaces.hh"
+
 using namespace std;
 using namespace mozart;
 
