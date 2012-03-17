@@ -6,7 +6,7 @@ The first time, prepare your build environment with:
 
     experiment$ mkdir build
     experiment$ cd build
-    build$ cmake -D MOZART_DIR /path/to/mozart2 ..
+    build$ cmake -D MOZART_DIR=/path/to/mozart2 ..
 
 When that's done, you can write your experiment in `main.cc`. Then you can build it with:
 
