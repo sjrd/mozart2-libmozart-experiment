@@ -1,9 +1,8 @@
 #include <iostream>
 
-#include <mozartcore.hh>
-#include <coreinterfaces.hh>
+#include <mozart.hh>
 
-#include "interfaces.hh"
+#include "customlib.hh"
 
 using namespace std;
 using namespace mozart;

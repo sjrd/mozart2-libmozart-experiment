@@ -26,26 +26,26 @@ set_property(TARGET mozartvm PROPERTY
 include_directories("${MOZART_DIR}/vm/main" "${MOZART_DIR}/build/vm/main")
 
 
-# Run the generator on "interfaces.hh"
+# Run the generator on "customlib.hh"
 
 add_custom_command(
-  OUTPUT interfaces.hh.gen
+  OUTPUT customlib.hh.gen
   COMMAND ${LLVM_BUILD_DIR}/bin/clang++ -std=c++0x -femit-ast
-    -o interfaces.hh.ast
+    -o customlib.hh.ast
     -I "${MOZART_DIR}/vm/main"
     -DMOZART_GENERATOR
-    ${CMAKE_CURRENT_SOURCE_DIR}/interfaces.hh
-  COMMAND ${MOZART_BUILD_DIR}/generator/main/generator interfaces.hh.ast
-  COMMAND ${CMAKE_COMMAND} -E touch interfaces.hh.gen
-  IMPLICIT_DEPENDS CXX "${CMAKE_CURRENT_SOURCE_DIR}/interfaces.hh"
+    ${CMAKE_CURRENT_SOURCE_DIR}/customlib.hh
+  COMMAND ${MOZART_BUILD_DIR}/generator/main/generator customlib.hh.ast
+  COMMAND ${CMAKE_COMMAND} -E touch customlib.hh.gen
+  IMPLICIT_DEPENDS CXX "${CMAKE_CURRENT_SOURCE_DIR}/customlib.hh"
   WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-  COMMENT Processing interfaces.hh
+  COMMENT Processing customlib.hh
   VERBATIM)
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 add_custom_target(gensources
-  DEPENDS interfaces.hh.gen
+  DEPENDS customlib.hh.gen
   VERBATIM)
 
 

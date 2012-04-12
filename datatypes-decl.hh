@@ -6,8 +6,7 @@
 #ifndef __DATATYPES_DECL_H
 #define __DATATYPES_DECL_H
 
-#include <mozartcore.hh>
-#include <coreinterfaces.hh>
+#include <mozart.hh>
 
 namespace mozart {
 
