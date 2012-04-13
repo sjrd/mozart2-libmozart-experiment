@@ -13,9 +13,9 @@ int main(int argc, char **argv) {
   VM vm = &virtualMachine;
 
   // Experiment
-  UnstableNode unstable;
-  unstable.make<SmallInt>(vm, 5);
-  StableNode stable;
-  stable.init(vm, unstable);
-  cout << stable.type()->getName() << endl;
+  UnstableNode unstable = UnstableNode::build<SmallInt>(vm, 5);
+  RichNode value = unstable;
+  cout << value.type()->getName() << endl;
+  if (value.is<SmallInt>())
+    cout << value.as<SmallInt>().value() << endl;
 }
