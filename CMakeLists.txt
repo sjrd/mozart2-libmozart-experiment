@@ -29,16 +29,18 @@ include_directories("${MOZART_DIR}/vm/main" "${MOZART_DIR}/build/vm/main")
 # Run the generator on "customlib.hh"
 
 add_custom_command(
-  OUTPUT customlib.hh.gen
+  OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/customlib.hh.gen
   COMMAND ${LLVM_BUILD_DIR}/bin/clang++ -std=c++0x -femit-ast
-    -o customlib.hh.ast
+    -o ${CMAKE_CURRENT_BINARY_DIR}/customlib.hh.ast
     -I "${MOZART_DIR}/vm/main"
     -DMOZART_GENERATOR
     ${CMAKE_CURRENT_SOURCE_DIR}/customlib.hh
-  COMMAND ${MOZART_BUILD_DIR}/generator/main/generator customlib.hh.ast
-  COMMAND ${CMAKE_COMMAND} -E touch customlib.hh.gen
+  COMMAND ${MOZART_BUILD_DIR}/generator/main/generator
+    ${CMAKE_CURRENT_BINARY_DIR}/customlib.hh.ast
+    ${CMAKE_CURRENT_BINARY_DIR}/
+  COMMAND ${CMAKE_COMMAND} -E touch ${CMAKE_CURRENT_BINARY_DIR}/customlib.hh.gen
   IMPLICIT_DEPENDS CXX "${CMAKE_CURRENT_SOURCE_DIR}/customlib.hh"
-  WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   COMMENT Processing customlib.hh
   VERBATIM)
 
